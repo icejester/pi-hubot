@@ -14,4 +14,4 @@ module.exports = (robot) ->
     res.send "Praise be his name."
 
   robot.hear /jfmallas/i (res) ->
-    res.send "He's the kind of guy who would only use me to stream movies..."
+    res.send "He is the kind of guy who would only use me to stream movies..."
