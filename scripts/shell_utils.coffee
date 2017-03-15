@@ -35,7 +35,7 @@ module.exports = (robot) ->
       res.send stdout
       res.send stderr
 
-    command "sudo reboot"
+    command = "sudo reboot"
 
     res.send "Rebooting..."
 
