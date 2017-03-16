@@ -21,19 +21,21 @@ module.exports = (robot) ->
 
     res.send command
 
+    @exec command, (error, stdout, stderr) ->
+      res.send error
+      res.send stdout
+      res.send stderr
+
+##     command = "git pull"
+
+##     res.send command
+
 ##     @exec command, (error, stdout, stderr) ->
 ##       res.send error
 ##       res.send stdout
 ##       res.send stderr
 
-##     command = "git pull"
-
-    res.send command
-
-    @exec command, (error, stdout, stderr) ->
-      res.send error
-      res.send stdout
-      res.send stderr
+    sleep 4000
 
     command = "sudo reboot"
 
