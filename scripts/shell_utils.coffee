@@ -55,3 +55,12 @@ module.exports = (robot) ->
       res.send stdout
       res.send stderr
 
+  robot.hear /what can you do pi-hubot?/i, (res) ->
+    @exec = require('child_process').exec
+    command = "grep hear /opt/pi-hubot/scripts *"
+
+    @exec command, (error, stdout, stderr) ->
+      res.send error
+      res.send stdout
+      res.send stderr
+
