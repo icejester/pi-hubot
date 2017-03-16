@@ -1,6 +1,6 @@
 # Description:
 #   do some system commands to tell the asker about the pi-bot...
-#
+#   
 
 module.exports = (robot) ->
 
@@ -30,10 +30,10 @@ module.exports = (robot) ->
 
 ##     res.send command
 
-##     @exec command, (error, stdout, stderr) ->
-##       res.send error
-##       res.send stdout
-##       res.send stderr
+###     @exec command, (error, stdout, stderr) ->
+###       res.send error
+###       res.send stdout
+###       res.send stderr
 
     sleep 4000
 
