@@ -17,16 +17,16 @@ module.exports = (robot) ->
 
   robot.hear /update yourself/i, (res) ->
     @exec = require('child_process').exec
-    command = "cd /usr/pi-hubot"
+    command = "cd /usr/pi-hubot;git pull"
 
     res.send command
 
-    @exec command, (error, stdout, stderr) ->
-      res.send error
-      res.send stdout
-      res.send stderr
+##     @exec command, (error, stdout, stderr) ->
+##       res.send error
+##       res.send stdout
+##       res.send stderr
 
-    command = "git pull"
+##     command = "git pull"
 
     res.send command
 
