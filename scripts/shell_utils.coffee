@@ -1,6 +1,6 @@
 # Description:
 #   do some system commands to tell the asker about the pi-bot...
-#   
+#
 
 module.exports = (robot) ->
 
@@ -21,21 +21,19 @@ module.exports = (robot) ->
 
     res.send command
 
+##     @exec command, (error, stdout, stderr) ->
+##       res.send error
+##       res.send stdout
+##       res.send stderr
+
+##     command = "git pull"
+
+    res.send command
+
     @exec command, (error, stdout, stderr) ->
       res.send error
       res.send stdout
       res.send stderr
-
-##     command = "git pull"
-
-##     res.send command
-
-###     @exec command, (error, stdout, stderr) ->
-###       res.send error
-###       res.send stdout
-###       res.send stderr
-
-    sleep 4000
 
     command = "sudo reboot"
 
@@ -51,15 +49,6 @@ module.exports = (robot) ->
     command = "sudo shutdown"
 
     res.send "Good night kids!"
-
-    @exec command, (error, stdout, stderr) ->
-      res.send error
-      res.send stdout
-      res.send stderr
-
-  robot.hear /what can you do pi-hubot?/i, (res) ->
-    @exec = require('child_process').exec
-    command = "grep robot.hear /usr/pi-hubot/scripts/*"
 
     @exec command, (error, stdout, stderr) ->
       res.send error
