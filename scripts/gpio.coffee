@@ -22,7 +22,7 @@ module.exports = (robot) ->
     res.send "PIN 21 now off."
     led.writeSync(0)
 
-  button.watch(err, value)
+  button.watch(err, value) ->
     console.log(err)
     msg = if value then "Detected physical button press." else "Button released"
     robot.send({room: 'pi-integration'},msg)
