@@ -6,11 +6,11 @@ module.exports = (robot) ->
 
   Gpio = require('onoff').Gpio
   led = new Gpio(21, 'out')
-  button = new Gpio(18, 'in', 'both')
+  button = new Gpio(2, 'in', 'both')
 
   robot.hear /led on/i, (res) ->
-    res.send "PIN 21 now lit up!"
-    led.writeSync(1)
+    ## res.send "PIN 21 now lit up!"
+    ## led.writeSync(1)
     if robot.auth.hasRole(res.envelope.user, 'gpio')
       res.send "PIN 21 now lit up!"
       led.writeSync(1)
@@ -24,8 +24,13 @@ module.exports = (robot) ->
 
   button.watch((err, value) ->
     console.log(err)
-    msg = if value then "Detected physical button press." else "Button released"
-    robot.send({room: 'pi-integration'},msg))
+    console.log(value)
+    ## msg = if value then "Detected physical button press." else "Button released"
+    if value
+      robot.send({room: 'pi-integration'},"button released")
+    else
+      robot.send({room: 'pi-integration'},"button pressed")
+    )
 
   exit = () ->
     led.unexport()
