@@ -20,6 +20,11 @@ module.exports = (robot) ->
 
     res.send command
 
+    @exec command, (error, stdout, stderr) ->
+      res.send error
+      res.send stdout
+      res.send stderr
+    
   robot.hear /go to bed pi-hubot/i, (res) ->
     @exec = require('child_process').exec
     command = "sudo shutdown"
