@@ -6,15 +6,14 @@ module.exports = (robot) ->
 
   robot.hear /Where you at?/i, (res) ->
     @exec = require('child_process').exec
-    command = "ifconfig"
 
-    res.send "This bot currently reports ifconfig as follows:"
+    command = "echo local: `ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1 -d'/'` && echo external: `dig +short myip.opendns.com @resolver1.opendns.com`"
 
     @exec command, (error, stdout, stderr) ->
       res.send error
       res.send stdout
       res.send stderr
-
+    
   robot.hear /update yourself/i, (res) ->
     @exec = require('child_process').exec
     command = "cd /usr/pi-hubot;git pull"
