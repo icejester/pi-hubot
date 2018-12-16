@@ -47,7 +47,7 @@ module.exports = (robot) ->
 
   robot.hear /start spring/i, (res) ->
     @exec = require('child_process').exec
-    command = "nohup java -jar /home/pi/sbSpeedTest-0.1.0.jar --server.port=8090 &"
+    command = "nohup java -jar /home/pi/sbSpeedTest.jar --server.port=8090 &"
 
     @exec command, (error, stdout, stderr) ->
       res.send error
@@ -56,7 +56,7 @@ module.exports = (robot) ->
 
   robot.hear /get download data/i, (res) ->
     @exec = require('child_process').exec
-    command = "curl 127.0.0.1:8090/doRecord"
+    command = "curl -s 127.0.0.1:8090/doRecord"
 
     @exec command, (error, stdout, stderr) ->
       res.send error
@@ -65,7 +65,7 @@ module.exports = (robot) ->
 
   robot.hear /speed test/i, (res) ->
     @exec = require('child_process').exec
-    command = "curl 127.0.0.1:8090/SpeedTest"
+    command = "curl -s 127.0.0.1:8090/SpeedTest"
 
     @exec command, (error, stdout, stderr) ->
       res.send error
